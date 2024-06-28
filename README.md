@@ -5,6 +5,9 @@ This repo constitutes a simple pattern of how to apply the app-of-apps pattern f
 * ArgoCD (Helm)
 * Nginx hello-world (Git)
 
+# Shortcut
+If you want to get up and running IMMEDIATELY, just run the approriate `_turbo.*`-script
+
 # Getting started
 To begin, you will need to have [kubectl](https://kubernetes.io/docs/reference/kubectl/) and [Helm](https://helm.sh/docs/intro/install/) installed on your box, and a cluster available. In this example, we'll be using [minikube](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fmacos%2Fx86-64%2Fstable%2Fbinary+download) with the Docker driver (default driver - you will need the [Docker Engine](https://docs.docker.com/engine/) for this). After having installed prerequisites, start `minikube`, i.e. run `minikube start`. Your context should now be minikube, check e.g. `kubectl config current-context`.
 
