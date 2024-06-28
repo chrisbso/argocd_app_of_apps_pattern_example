@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-app
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: argocd
+    name: in-cluster
+  project: default
+  source:
+    path: nginx
+    repoURL: git@github.com:chrisbso/argocd_app_of_apps_pattern_example.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}

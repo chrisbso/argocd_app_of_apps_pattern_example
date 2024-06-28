@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: apps
+  namespace: argocd     
+spec:
+  project: default
+  destination:
+    namespace: default
+    name: in-cluster 
+  source:
+    repoURL: git@github.com:chrisbso/argocd_app_of_apps_pattern_example.git
+    targetRevision: HEAD
+    path: appOfApps
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true 
+      allowEmpty: false 

@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: redis-app
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    chart: redis
+    repoURL: registry-1.docker.io/bitnamicharts  # note: the oci:// syntax is not included.
+    targetRevision: 19.6.0
+    helm:
+      valuesObject:
+        master:
+          service:
+            type: NodePort
+  destination:
+    name: in-cluster
+    namespace: default 
+  syncPolicy:
+    automated: {}
