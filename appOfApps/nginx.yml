@@ -12,7 +12,7 @@ spec:
   project: default
   source:
     path: nginx
-    repoURL: git@github.com:chrisbso/argocd_app_of_apps_pattern_example.git
+    repoURL: https://github.com/chrisbso/argocd_app_of_apps_pattern_example.git
     targetRevision: HEAD
   syncPolicy:
     automated: {}

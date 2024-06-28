@@ -9,7 +9,7 @@ spec:
     namespace: default
     name: in-cluster 
   source:
-    repoURL: git@github.com:chrisbso/argocd_app_of_apps_pattern_example.git
+    repoURL: https://github.com/chrisbso/argocd_app_of_apps_pattern_example.git 
     targetRevision: HEAD
     path: appOfApps
   syncPolicy:
