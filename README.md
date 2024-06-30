@@ -27,12 +27,12 @@ Let's get the visual representation of our apps ready, by logging into the ArgoC
 
 ## Creating our app-of-apps.
 Now that we have ArgoCD running in our cluster, let's create our app-of-apps by applying the appropriate manifest. Run `kubectl apply -f bootstrap.yml` to deploy your app-of-apps. There should now be 4 apps appearing in your portal,
- * `appOfApps`
+ * `app-of-apps`
  * `redis-app`
  * `argocd-app`
  * `nginx-app`
 
-`appOfApps`now manages its own children - try e.g. deleting `redis-app` from the portal view. It will quickly be re-synced by `appOfApps`, to the manifests under the `apps`-folder in this repo.
+`app-of-apps` now manages its own children - try e.g. deleting `redis-app` from the portal view. It will quickly be re-synced by `app-of-apps`, to the manifests under the `apps`-folder in this repo.
 
 ## Exploring our app-managed apps
   * `redis-app` doesn't really do anything, but if you have an appliction running locally on your box which makes use of Redis connections, you could try connecting to it by exposing it to localhost, `kubectl port-forward service/redis-app-master 6379:6379`. The default username should be `default`, and the password can be extracted to a env-variable by e.g. `export REDIS_PASSWORD=$(kubectl get secret --namespace default redis-app -o jsonpath="{.data.redis-password}" | base64 --decode)`. Have fun!
