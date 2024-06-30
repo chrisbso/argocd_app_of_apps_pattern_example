@@ -1,9 +1,9 @@
 # ArgoCD App-of-apps Pattern Example
 
 This repo constitutes a simple pattern of how to apply the app-of-apps pattern for ArgoCD. The app-of-apps (`appOfApps.yml`) in this repo manages three children apps:
-* Bitnami Redis (Helm, `apps/redis.yml`, oci://registry-1.docker.io/bitnamicharts)
+* Bitnami Redis (Helm, `apps/redis.yml`, [oci://registry-1.docker.io/bitnamicharts/redis](https://github.com/bitnami/charts/tree/main/bitnami/redis))
 * ArgoCD (Helm, `apps/argocd.yml`, https://argoproj.github.io/argo-helm)
-* Nginx hello-world (Git, `apps/nginx.yml`, this repo)
+* Nginx hello-world (Git, `apps/nginx.yml`, `./nginx/`)
 
 # Getting started
 To begin, you will need to have [kubectl](https://kubernetes.io/docs/reference/kubectl/) and [Helm](https://helm.sh/docs/intro/install/) installed on your box, and a cluster available. In this example, we'll be using [minikube](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fmacos%2Fx86-64%2Fstable%2Fbinary+download) with the Docker driver (default driver - you will need the [Docker Engine](https://docs.docker.com/engine/) for this). After having installed prerequisites, start `minikube`, i.e. run `minikube start`. Your context should now be minikube, check e.g. `kubectl config current-context`.
@@ -32,7 +32,7 @@ Now that we have ArgoCD running in our cluster, let's create our app-of-apps by 
  * `argocd-app`
  * `nginx-app`
 
-The `apps`-app now manages its own children - try e.g. deleting `redis-app` from the portal view. It will quickly be re-synced by our `apps`-app, to the manifests under the `appOfApps`-folder in this repo.
+`appOfApps`now manages its own children - try e.g. deleting `redis-app` from the portal view. It will quickly be re-synced by `appOfApps`, to the manifests under the `apps`-folder in this repo.
 
 ## Exploring our app-managed apps
   * `redis-app` doesn't really do anything, but if you have an appliction running locally on your box which makes use of Redis connections, you could try connecting to it by exposing it to localhost, `kubectl port-forward service/redis-app-master 6379:6379`. The default username should be `default`, and the password can be extracted to a env-variable by e.g. `export REDIS_PASSWORD=$(kubectl get secret --namespace default redis-app -o jsonpath="{.data.redis-password}" | base64 --decode)`. Have fun!
