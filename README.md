@@ -1,12 +1,9 @@
 # ArgoCD App-of-apps Pattern Example
 
-This repo constitutes a simple pattern of how to apply the app-of-apps pattern for ArgoCD. The app-of-apps in this repo manages three children apps:
-* Bitnami Redis (Helm)
-* ArgoCD (Helm)
-* Nginx hello-world (Git)
-
-# Shortcut
-If you want to get up and running IMMEDIATELY, just run the approriate `_turbo.*`-script
+This repo constitutes a simple pattern of how to apply the app-of-apps pattern for ArgoCD. The app-of-apps (`appOfApps.yml`) in this repo manages three children apps:
+* Bitnami Redis (Helm, `apps/redis.yml`, oci://registry-1.docker.io/bitnamicharts)
+* ArgoCD (Helm, `apps/argocd.yml`, https://argoproj.github.io/argo-helm)
+* Nginx hello-world (Git, `apps/nginx.yml`, this repo)
 
 # Getting started
 To begin, you will need to have [kubectl](https://kubernetes.io/docs/reference/kubectl/) and [Helm](https://helm.sh/docs/intro/install/) installed on your box, and a cluster available. In this example, we'll be using [minikube](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fmacos%2Fx86-64%2Fstable%2Fbinary+download) with the Docker driver (default driver - you will need the [Docker Engine](https://docs.docker.com/engine/) for this). After having installed prerequisites, start `minikube`, i.e. run `minikube start`. Your context should now be minikube, check e.g. `kubectl config current-context`.
@@ -18,7 +15,7 @@ helm repo add argo https://argoproj.github.io/argo-helm
 helm install argocd argo/argo-cd -n argocd --create-namespace --namespace argocd --version 7.3.2
 ```
 
-Here, we chose version `7.3.2`, since it matches the `targetRevision` in `appOfApps/argocd.yml`. *If these two don't match when we deploy our app-of-apps later, it will break our ArgoCD-install(!)*.
+Here, we chose version `7.3.2`, since it matches the `targetRevision` in `apps/argocd.yml`. *If these two don't match when we deploy our app-of-apps later, it will break our ArgoCD-install(!)*.
 
 ## Logging in to ArgoCD's web portal
 *(This section can be skipped if you just want to follow the instructions which are prompted after the ArgoCD install mentioned above)*
@@ -30,14 +27,10 @@ Let's get the visual representation of our apps ready, by logging into the ArgoC
 
 ## Creating our app-of-apps.
 Now that we have ArgoCD running in our cluster, let's create our app-of-apps by applying the appropriate manifest. Run `kubectl apply -f bootstrap.yml` to deploy your app-of-apps. There should now be 4 apps appearing in your portal,
- * `apps`
-  ** this is the "app-of-apps"
+ * `appOfApps`
  * `redis-app`
-  ** this is pulled from Bitnami's Helm charts (oci://registry-1.docker.io/bitnamicharts)
  * `argocd-app`
-  ** this is pulled from [ArgoCD's official Helm chart](https://argoproj.github.io/argo-helm)
  * `nginx-app`
-  ** this is pulled in from this repo, from under the `nginx`-folder
 
 The `apps`-app now manages its own children - try e.g. deleting `redis-app` from the portal view. It will quickly be re-synced by our `apps`-app, to the manifests under the `appOfApps`-folder in this repo.
 
