@@ -1,9 +1,9 @@
 # ArgoCD App-of-apps Pattern Example
 
 This repo constitutes a simple pattern of how to apply the app-of-apps pattern for ArgoCD. The app-of-apps (`appOfApps.yml`) in this repo manages three children apps:
-* Bitnami Redis (Helm, `apps/redis.yml`, [oci://registry-1.docker.io/bitnamicharts/redis](https://github.com/bitnami/charts/tree/main/bitnami/redis))
-* ArgoCD (Helm, `apps/argocd.yml`, https://argoproj.github.io/argo-helm)
-* Nginx hello-world (Git, `apps/nginx.yml`, `./nginx/`)
+* Bitnami Redis (Helm, `./apps/redis.yml`, [oci://registry-1.docker.io/bitnamicharts/redis](https://github.com/bitnami/charts/tree/main/bitnami/redis))
+* ArgoCD (Helm, `./apps/argocd.yml`, https://argoproj.github.io/argo-helm)
+* Nginx hello-world (Git, `./apps/nginx.yml`, `./nginx/`)
 
 # Getting started
 To begin, you will need to have [kubectl](https://kubernetes.io/docs/reference/kubectl/) and [Helm](https://helm.sh/docs/intro/install/) installed on your box, and a cluster available. In this example, we'll be using [minikube](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fmacos%2Fx86-64%2Fstable%2Fbinary+download) with the Docker driver (default driver - you will need the [Docker Engine](https://docs.docker.com/engine/) for this). After having installed prerequisites, start `minikube`, i.e. run `minikube start`. Your context should now be minikube, check e.g. `kubectl config current-context`.
