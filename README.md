@@ -26,7 +26,7 @@ Let's get the visual representation of our apps ready, by logging into the ArgoC
 3. You should now be greeted by an empty set of apps after logging in with `admin` at `localhost:8080`- let's create one (or many!).
 
 ## Creating our app-of-apps.
-Now that we have ArgoCD running in our cluster, let's create our app-of-apps by applying the appropriate manifest. Run `kubectl apply -f bootstrap.yml` to deploy your app-of-apps. There should now be 4 apps appearing in your portal,
+Now that we have ArgoCD running in our cluster, let's create our app-of-apps by applying the appropriate manifest. Run `kubectl apply -f app-of-apps.yml` to deploy your app-of-apps. There should now be 4 apps appearing in your portal,
  * `app-of-apps`
  * `redis-app`
  * `argocd-app`
