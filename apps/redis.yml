@@ -10,7 +10,7 @@ spec:
   source:
     chart: redis
     repoURL: registry-1.docker.io/bitnamicharts  # note: the oci:// syntax is not included.
-    targetRevision: 19.6.0
+    targetRevision: 19.5.5
     helm:
       valuesObject:
         master:
