@@ -9,7 +9,7 @@ This repo constitutes a simple pattern of how to apply the app-of-apps pattern f
 
 To begin, you will need to have [kubectl](https://kubernetes.io/docs/reference/kubectl/) and [Helm](https://helm.sh/docs/intro/install/) installed on your box, and a cluster available. In this example, we'll be using [minikube](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fmacos%2Fx86-64%2Fstable%2Fbinary+download) with the Docker driver (default driver - you will need the [Docker Engine](https://docs.docker.com/engine/) for this). After having installed prerequisites, start `minikube`, i.e. run `minikube start`. Your context should now be minikube, check e.g. `kubectl config current-context`.
 
-*An automation script has been supplied for Linux/MacOS (`bootstrap.sh`) and Windows (`bootstrap.ps1`) - these scripts provide a shortcut instead of doing the steps below manually, but also require [argocd-cli](https://argo-cd.readthedocs.io/en/stable/cli_installation/) to run*
+*An automation script has been supplied for Linux/MacOS (`bootstrap.sh`) and Windows (`bootstrap.ps1`) - these scripts perform the installlation steps outlined below, but also require [argocd-cli](https://argo-cd.readthedocs.io/en/stable/cli_installation/) to run.*
 
 ## Installing ArgoCD
 We will now start off by installing ArgoCD in our cluster using Helm,
