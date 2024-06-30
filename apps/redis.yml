@@ -16,6 +16,10 @@ spec:
         master:
           service:
             type: NodePort
+          livenessProbe:
+            timeoutSeconds: 15
+          readinessProbe:
+            timeoutSeconds: 15
   destination:
     name: in-cluster
     namespace: default 
