@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   destination:
-    namespace: default
+    namespace: argocd
     name: in-cluster 
   source:
     repoURL: https://github.com/chrisbso/argocd_app_of_apps_pattern_example.git 
