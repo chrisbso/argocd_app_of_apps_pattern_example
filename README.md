@@ -23,7 +23,7 @@ Here, we chose version `7.3.2`, since it matches the `targetRevision` in `apps/a
 ## Logging in to ArgoCD's web portal
 *(This section can be skipped if you just want to follow the instructions which are prompted after the ArgoCD install mentioned above)*
 
-Let's get the visual representation of our apps ready, by logging into the ArgoCD web portal. To access this, we'll need to forward one of the service ports of the `argocd-server`-service, which we'll open in our browser on our box, and get the `admin`-password. 
+Let's get the visual representation of our apps ready, by logging into the ArgoCD web portal. To access this, we'll need to forward one of the service ports of the `argocd-server`-service, which we'll open in our browser, and get the `admin`-password. 
 1. Open a new terminal and forward the service port 80 to local port 8080, `kubectl port-forward service/argocd-server -n argocd 8080:80` - the portal should be accessible at `localhost:8080` in your browser.
 2. Log in with the `admin`-user, password can be retrieved by `kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d && echo`
 3. You should now be greeted by an empty set of apps after logging in with `admin` at `localhost:8080`- let's create one (or many!).
