@@ -1,9 +1,9 @@
 # ArgoCD App-of-apps Pattern Example
 
 This repo constitutes a simple pattern of how to apply the app-of-apps pattern for ArgoCD. The app-of-apps (`appOfApps.yml`) in this repo manages three children apps:
-* Bitnami Redis (Helm, `./apps/redis.yml`, [oci://registry-1.docker.io/bitnamicharts/redis](https://github.com/bitnami/charts/tree/main/bitnami/redis))
-* ArgoCD (Helm, `./apps/argocd.yml`, https://argoproj.github.io/argo-helm)
-* Nginx hello-world (Git, `./apps/nginx.yml`, `./nginx/`)
+* Bitnami Redis (Helm, `apps/redis.yml`, [oci://registry-1.docker.io/bitnamicharts/redis](https://github.com/bitnami/charts/tree/main/bitnami/redis))
+* ArgoCD (Helm, `apps/argocd.yml`, https://argoproj.github.io/argo-helm)
+* Nginx hello-world (Git, `apps/nginx.yml`, `nginx/`)
 
 # Getting started
 
