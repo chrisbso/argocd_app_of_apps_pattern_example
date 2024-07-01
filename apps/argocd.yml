@@ -11,12 +11,12 @@ spec:
  source:
    chart: argo-cd
    repoURL: https://argoproj.github.io/argo-helm
-   targetRevision: 7.3.2
+   targetRevision: 6.10.*
    helm:
      releaseName: argo
  syncPolicy:
    automated:
-     prune: false 
+     prune: true 
      selfHeal: true 
      allowEmpty: false 
 
