@@ -15,9 +15,6 @@ spec:
    helm:
      releaseName: argo
  syncPolicy:
-   automated:
-     prune: false 
-     selfHeal: true 
-     allowEmpty: false 
+   automated: {} 
 
 
